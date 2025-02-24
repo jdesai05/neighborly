@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housing Society Registration Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fe;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        h2, h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a1523;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #4b4b4b;
+            font-size: 0.9rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #3a3541;
+        }
+
+        .file-upload {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .file-upload input[type="file"] {
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            width: 100%;
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .file-upload button {
+            padding: 0.75rem 1rem;
+            background-color: #3a3541;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .file-upload button:hover {
+            background-color: #2d2a33;
+        }
+
+        .file-name {
+            font-size: 0.9rem;
+            color: #4b4b4b;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 70%;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #3a3541;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            margin: 1.5rem 0 0;
+            transition: background-color 0.2s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #2d2a33;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h2>Housing Society Registration Form</h2>
+        <form action="#" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="society_name">Society Name:</label>
+                <input type="text" id="society_name" name="society_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Society Address:</label>
+                <textarea id="address" name="address" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+
+            <div class="form-group">
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pincode">Pin Code:</label>
+                <input type="text" id="pincode" name="pincode" required>
+            </div>
+
+            <h3>Management Committee Details</h3>
+
+            <div class="form-group">
+                <label for="president">President Name:</label>
+                <input type="text" id="president" name="president" required>
+            </div>
+
+            <div class="form-group">
+                <label for="secretary">Secretary Name:</label>
+                <input type="text" id="secretary" name="secretary" required>
+            </div>
+
+            <div class="form-group">
+                <label for="treasurer">Treasurer Name:</label>
+                <input type="text" id="treasurer" name="treasurer" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contact">Society Contact Number:</label>
+                <input type="tel" id="contact" name="contact" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Society Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <h3>Required Documents</h3>
+
+            <div class="form-group">
+                <label for="bylaws">Upload Society Bylaws (PDF):</label>
+                <div class="file-upload">
+                    <button type="button">Choose File</button>
+                    <span class="file-name">No file chosen</span>
+                    <input type="file" id="bylaws" name="bylaws" accept=".pdf" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="member_list">Upload Member List (Excel/PDF):</label>
+                <div class="file-upload">
+                    <button type="button">Choose File</button>
+                    <span class="file-name">No file chosen</span>
+                    <input type="file" id="member_list" name="member_list" accept=".pdf,.xlsx,.xls" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="registration_proof">Upload Registration Proof (PDF):</label>
+                <div class="file-upload">
+                    <button type="button">Choose File</button>
+                    <span class="file-name">No file chosen</span>
+                    <input type="file" id="registration_proof" name="registration_proof" accept=".pdf" required>
+                </div>
+            </div>
+
+            <button type="submit">Submit Registration</button>
+        </form>
+    </div>
+
+    <script>
+        document.querySelectorAll('.file-upload input[type="file"]').forEach(input => {
+            input.addEventListener('change', function () {
+                let fileName = this.files.length > 0 ? this.files[0].name : 'No file chosen';
+                this.previousElementSibling.textContent = fileName;
+            });
+        });
+    </script>
+</body>
+</html>

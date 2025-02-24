@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaints Registration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fe;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a1523;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #4b4b4b;
+            font-size: 0.9rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #3a3541;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #3a3541;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .submit-button:hover {
+            background-color: #2d2a33;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Complaints Registration</h1>
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="complaint-type">Complaint Type:</label>
+                <select id="complaint-type" name="complaint-type" required>
+                    <option value="">Select a type</option>
+                    <option value="product">Product</option>
+                    <option value="service">Service</option>
+                    <option value="staff">Staff</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="incident-date">Date of Incident:</label>
+                <input type="date" id="incident-date" name="incident-date" required>
+            </div>
+            <div class="form-group">
+                <label for="complaint-details">Complaint Details:</label>
+                <textarea id="complaint-details" name="complaint-details" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="preferred-resolution">Preferred Resolution:</label>
+                <input type="text" id="preferred-resolution" name="preferred-resolution">
+            </div>
+            <button type="submit" class="submit-button">Submit Complaint</button>
+        </form>
+    </div>
+</body>
+</html>
