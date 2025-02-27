@@ -40,6 +40,27 @@
                 <img src="pic1.png" alt="Neighborhood view with decorative circles" class="hero-image">
             </div>
         </section>
+
+        <div id="community-section"></div>
+          <script>
+              fetch('community-section.html')
+              .then(response => response.text())
+              .then(html => document.getElementById('community-section').innerHTML = html);
+          </script>
+          <div id="raise-voice"></div>
+          <script>
+              fetch('raise.html')
+              .then(response => response.text())
+              .then(html => document.getElementById('raise').innerHTML = html);
+          </script>
+        <div id="testi"></div>
+        
+        <script>
+            fetch('testi.html')
+            .then(response => response.text())
+            .then(html => document.getElementById('testi').innerHTML = html);
+        </script>
+
     </div>
 </body>
 </html>

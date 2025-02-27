@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .hero-title {
+            font-size: 64px;
+            font-weight: bold;
+            line-height: 1.1;
+            max-width: 400px;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-text {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .hero-image {
+            width: 100%;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        /* Community Grid Section */
+        .community-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .community-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .grid-item {
+            position: relative;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .grid-item.large {
+            grid-row: span 2;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+            }
+
+            .hero-title {
+                font-size: 48px;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-item.large {
+                grid-row: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="hero-title">Empower Your Community with Neighborly!</h1>
+            <div class="hero-content">
+                <p class="hero-text">Neighborly connects residents to address concerns, fostering a safer and more cohesive neighborhood. Join us to raise your voice and make a difference!</p>
+                <img src="pic2.png" alt="Community members collaborating" class="hero-image">
+            </div>
+        </section>
+
+        <!-- Community Grid Section -->
+        <section class="community-section">
+            <h2 class="community-title">Join Our Community of Residents Now!</h2>
+            <div class="image-grid">
+                <div class="grid-item large">
+                    <img src="g1.png" alt="Holiday decorative figures">
+                </div>
+                <div class="grid-item">
+                    <img src="g2.png" alt="People exercising at gym">
+                </div>
+                <div class="grid-item">
+                    <img src="g3.png" alt="Person with holiday lights">
+                </div>
+                <div class="grid-item large">
+                    <img src="g4.png" alt="Colorful community festival">
+                </div>
+                <div class="grid-item">
+                    <img src="g5.png" alt="Indoor sports facility">
+                </div>
+                <div class="grid-item">
+                    <img src="g6.png" alt="Aerial view of apartment complex">
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
