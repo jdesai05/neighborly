@@ -94,6 +94,10 @@ def events():
 def raise_voice():
     return render_template('raise.html')
 
+@app.route('/aboutus')
+def aboutus():
+    return render_template('aboutus.html')
+
 @app.route('/community-section')
 def community_section():
     return render_template('community-section.html')
@@ -256,7 +260,7 @@ def chat():
 
 #Fix for the complaintsform route to match your HTML links
 
-@app.route("/complaintsform", methods=["POST"])
+@app.route("/complaintsform", methods=["GET","POST"])
 def complaintsform():
     if request.method == "POST":
         fullname = request.form.get("fullname").strip()
@@ -280,7 +284,8 @@ def complaintsform():
         conn.close()
 
         flash("Complaint submitted successfully!", "success")
-        return redirect(url_for("complaintsform"))
+        return redirect("/")
+    return render_template("complaintsform.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

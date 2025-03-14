@@ -279,9 +279,9 @@
             <div class="nav-links">
                 <a href="{{ url_for('home') }}">Home</a>
                 <div class="dropdown">
-                    <a href="{{ url_for('complaintsform') }}">Complaints &#9662;</a>
+                    <a href="{{ url_for('complaintsform') }}">Complaints</a>
                 </div>
-                <a href="#">About Us</a>
+                <a href="{{url_for('aboutus')}}">About Us</a>
                 <a href="{{ url_for('events') }}">Events</a>
                 {% if session.get('is_admin') %}
                     <a href="{{ url_for('add_event') }}">Add Event</a>

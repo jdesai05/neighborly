@@ -7,207 +7,468 @@
     <style>
         /* General Styling */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             background-color: #F4F4F4;
             color: #333;
+            line-height: 1.6;
         }
 
-        /* Hero Section */
-        .hero {
-            background: url('neighborhood.jpg') no-repeat center center/cover;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: black;
-        }
-
-        .hero-content {
-            max-width: 600px;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin: 20px 0;
+        /* Common styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
 
         .btn {
             display: inline-block;
-            background: #FFA500;
-            color: black;
-            padding: 12px 24px;
+            background: #ff7e00;
+            color: white;
+            padding: 12px 28px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 30px;
             font-weight: bold;
+            transition: transform 0.3s, background 0.3s;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background: #e67100;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #3a2f35;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #3a2f35;
+            color: white;
+            padding: 120px 0 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin: 0 auto 40px;
+            max-width: 700px;
+            opacity: 0.9;
         }
 
         /* About Us Section */
         .about {
-            padding: 60px;
             background: white;
         }
 
         .about-container {
             display: flex;
-            justify-content: space-between;
+            flex-wrap: wrap;
             align-items: center;
+            gap: 40px;
         }
 
         .about-text {
-            width: 50%;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 500px;
+            text-align: center;
         }
 
         .about-image img {
-            width: 400px;
+            max-width: 100%;
             border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
         /* Features Section */
         .features {
+            background: #3a2f35;
+            color: white;
             text-align: center;
-            padding: 60px;
-            background: #2D89EF;
-            color: black;
         }
 
         .feature-container {
             display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
         }
 
         .feature-box {
-            background: white;
-            color: #333;
-            padding: 20px;
-            width: 30%;
-            border-radius: 8px;
-            text-align: center;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px 20px;
+            border-radius: 12px;
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
-        /* Meet the Team */
+        .feature-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-box h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Team Section */
         .team {
-            padding: 60px;
-            background: white;
+            background: #f9f9f9;
             text-align: center;
         }
 
         .team-container {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 40px;
+            gap: 30px;
+            margin-top: 40px;
         }
 
         .team-member {
-            background: #F4F4F4;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 200px;
+            max-width: 280px;
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-8px);
         }
 
         .team-member img {
-            width: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #3a2f35;
+        }
+
+        .team-member h4 {
+            margin: 15px 0 5px;
+            font-size: 1.2rem;
+        }
+
+        .team-member p {
+            color: #666;
+            font-size: 0.9rem;
         }
 
         /* Call to Action */
         .cta {
+            background: linear-gradient(135deg, #3a2f35 0%, #524049 100%);
+            color: white;
             text-align: center;
-            padding: 60px;
-            background: #FFA500;
-            color: black;
+            padding: 80px 0;
         }
 
         .cta h2 {
-            margin-bottom: 20px;
+            color: white;
+            margin-bottom: 15px;
         }
 
+        .cta p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
+        
+
+        /* Responsive Design */
+        @media (max-width: 800px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .about-container, .feature-container, .team-container {
+                flex-direction: column;
+            }
+            
+            .about-text, .about-image {
+                width: 100%;
+            }
+            
+            .feature-box, .team-member {
+                max-width: 100%;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .auth-button {
+            background-color: #F4F4F4;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #3a2f35;
+            border-radius: 10px;
+            padding: 60px 40px;
+            margin-top: 20px;
+        }
+
+        .hero-content {
+            max-width: 500px;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .hero-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background-color: #3a2f35;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .hero-image {
+            width: 400px;
+            height: auto;
+        }
+
+        
     </style>
 </head>
 <body>
-
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
+        <div class="container">
+            <!-- Navigation -->
+        <nav>
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Neighborly Logo" width="50" height="60">
+                <span class="logo-text">Neighborly</span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="{{ url_for('home') }}">Home</a>
+                <div class="dropdown">
+                    <a href="{{ url_for('complaintsform') }}">Complaints</a>
+                </div>
+                <a href="{{url_for('aboutus')}}">About Us</a>
+                <a href="{{ url_for('events') }}">Events</a>
+                {% if session.get('is_admin') %}
+                    <a href="{{ url_for('add_event') }}">Add Event</a>
+                {% endif %}
+            </div>
+            
+            {% if session.get('user_id') %}
+                <button class="auth-button" onclick="window.location.href='/logout'">Logout</button>
+            {% else %}
+                <button class="auth-button" onclick="window.location.href='/signup'">Register / Login</button>
+            {% endif %}
+        </nav>
             <h1>Building Stronger Communities, One Neighbor at a Time</h1>
             <p>Neighborly connects communities by fostering trust, support, and meaningful connections between people.</p>
-            <a href="#" class="btn">Learn More</a>
+            <a href="#" class="btn">Get Started</a>
         </div>
+        <br>
+        <br>
     </section>
 
     <!-- About Us Section -->
     <section class="about">
-        <div class="about-container">
-            <div class="about-text">
-                <h2>Who We Are</h2>
-                <p>Neighborly is a community-driven platform designed to strengthen neighborhoods by encouraging collaboration, support, and engagement.</p>
-                <h3>Our Mission</h3>
-                <p>To empower people to create stronger, safer, and more connected communities through meaningful relationships and shared resources.</p>
-                <h3>Our Vision</h3>
-                <p>A world where every neighborhood is a place of trust, support, and togetherness.</p>
-            </div>
-            <div class="about-image">
-                <img src="community.jpg" alt="Community">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-text">
+                    <h2>Who We Are</h2>
+                    <p>Neighborly is a community-driven platform designed to strengthen neighborhoods by encouraging collaboration, support, and engagement among residents.</p>
+                    <h3>Our Mission</h3>
+                    <p>To empower people to create stronger, safer, and more connected communities through meaningful relationships and shared resources.</p>
+                    <h3>Our Vision</h3>
+                    <p>A world where every neighborhood is a place of trust, support, and togetherness, where neighbors become friends and communities thrive.</p>
+                </div>
+                <div class="about-image">
+                    <img src="{{ url_for('static', filename='images/g3.png') }}" alt="Community">
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Why Choose Us Section -->
     <section class="features">
-        <h2>Why Choose Neighborly?</h2>
-        <div class="feature-container">
-            <div class="feature-box">
-                <h3>🛡️ Trust & Safety</h3>
-                <p>We prioritize security and well-being through verified connections.</p>
-            </div>
-            <div class="feature-box">
-                <h3>🤝 Community Engagement</h3>
-                <p>Get involved in local events, volunteer work, and initiatives.</p>
-            </div>
-            <div class="feature-box">
-                <h3>📍 Local Support</h3>
-                <p>Find and offer help within your neighborhood, from babysitting to borrowing tools.</p>
+        <div class="container">
+            <h2>Why Choose Neighborly?</h2>
+            <div class="feature-container">
+                <div class="feature-box">
+                    <span class="feature-icon">🛡️</span>
+                    <h3>Trust & Safety</h3>
+                    <p>We prioritize your security and well-being through verified profiles and privacy controls.</p>
+                </div>
+                <div class="feature-box">
+                    <span class="feature-icon">🤝</span>
+                    <h3>Community Engagement</h3>
+                    <p>Get involved in local events, volunteer work, and community initiatives.</p>
+                </div>
+                <div class="feature-box">
+                    <span class="feature-icon">📍</span>
+                    <h3>Local Support</h3>
+                    <p>Find and offer help within your neighborhood, from babysitting to borrowing tools.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Meet Our Team -->
     <section class="team">
-        <h2>Meet Our Team</h2>
-        <div class="team-container">
-            <div class="team-member">
-                <img src="team1.jpg" alt="Team Member">
-                <h4>John Doe</h4>
-                <p>Founder & CEO</p>
-            </div>
-            <div class="team-member">
-                <img src="team2.jpg" alt="Team Member">
-                <h4>Jane Smith</h4>
-                <p>Community Manager</p>
-            </div>
-            <div class="team-member">
-                <img src="team3.jpg" alt="Team Member">
-                <h4>Emily Johnson</h4>
-                <p>Operations Head</p>
+        <div class="container">
+            <h2>Meet Our Team</h2>
+            <div class="team-container">
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='images/a1.png') }}" alt="John Doe">
+                    <h4>John Doe</h4>
+                    <p>Founder & CEO</p>
+                </div>
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='images/a2.png') }}" alt="Jane Smith">
+                    <h4>Jane Smith</h4>
+                    <p>Community Manager</p>
+                </div>
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='images/a1.png') }}" alt="Emily Johnson">
+                    <h4>Emily Johnson</h4>
+                    <p>Operations Head</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Call To Action -->
     <section class="cta">
-        <h2>Join the Neighborly Community!</h2>
-        <p>Ready to connect with your neighbors and build a stronger community?</p>
-        <a href="#" class="btn">Sign Up Now</a>
+        <div class="container">
+            <h2>Join the Neighborly Community!</h2>
+            <p>Ready to connect with your neighbors and build a stronger community?</p>
+            <a href="#" class="btn">Sign Up Now</a>
+        </div>
     </section>
-
 </body>
 </html>
