@@ -338,6 +338,187 @@
             .then(response => response.text())
             .then(html => document.getElementById('testi').innerHTML = html);
         </script>
+
+       <!-- Floating Chatbot Button -->
+<div class="chatbot-icon" id="chatbot-button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+</div>
+
+<!-- Chatbot Popup -->
+<div class="chatbot-popup" id="chatbot-popup" style="display: none;">
+    <div class="chatbot-header">
+        Neighborly Assistant
+        <span class="chatbot-close" id="chatbot-close">×</span>
+    </div>
+    <div class="chatbot-body" id="chatbot-body">
+        <div class="chatbot-message bot-message">Hi there! How can I help you today? Please select from the options below:</div>
+        <div class="chatbot-message bot-message" id="menu-options">
+            1️⃣ What is Neighborly?<br>
+            2️⃣ How can I report a complaint?<br>
+            3️⃣ How do I join community events?<br>
+            4️⃣ Can I raise awareness about an issue?<br>
+            5️⃣ How do I register for Neighborly?<br>
+            6️⃣ Who manages Neighborly?<br>
+            7️⃣ Is Neighborly free to use?<br>
+            8️⃣ How can I contact support?
+        </div>
+    </div>
+    <div class="chatbot-input-container">
+        <input type="text" class="chatbot-input" id="chatbot-input" placeholder="Type 1-8 or your question..." />
+        <button class="chatbot-send-btn" id="chatbot-send">Send</button>
+    </div>
+</div>
+
+<script>
+    // Chatbot functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get chatbot elements
+        const chatbotButton = document.getElementById('chatbot-button');
+        const chatbotPopup = document.getElementById('chatbot-popup');
+        const chatbotClose = document.getElementById('chatbot-close');
+        const chatbotInput = document.getElementById('chatbot-input');
+        const chatbotSend = document.getElementById('chatbot-send');
+        const chatbotBody = document.getElementById('chatbot-body');
+        
+        // Check if elements exist to prevent errors
+        if (!chatbotButton || !chatbotPopup || !chatbotClose || !chatbotInput || !chatbotSend || !chatbotBody) {
+            console.error('Chatbot elements not found');
+            return;
+        }
+        
+        // Predefined answers
+        const answers = {
+            "1": "👉 Neighborly is a community platform that helps residents stay connected, report issues, participate in local events, and support neighborhood initiatives.",
+            "2": "👉 You can report a complaint by visiting the **\"Complaints\"** section on our website and filling out the form. Once submitted, local authorities or community admins will review it.",
+            "3": "👉 Simply go to the **\"Events\"** section to see upcoming activities in your neighborhood. You can click on an event to view details and register.",
+            "4": "👉 Yes! Use the **\"Raise Your Voice\"** section to highlight concerns, share initiatives, or rally support for community-driven projects.",
+            "5": "👉 Click the **\"Register / Login\"** button on the homepage and sign up using your email. Once registered, you can access all features.",
+            "6": "👉 Neighborly is managed by local community admins who oversee events, complaints, and general platform engagement. If you're an admin, you can log in to add events and manage issues.",
+            "7": "👉 Yes! Neighborly is completely free for residents to use and participate in.",
+            "8": "👉 If you need help, you can reach out via the **\"Contact Us\"** page or email our support team at **support@neighborly.com**."
+        };
+        
+        // Keywords for natural language processing
+        const keywords = {
+            "what is|about|purpose": "1",
+            "report|complaint|issue|problem": "2",
+            "event|join event|community event": "3",
+            "raise|awareness|voice|concern": "4",
+            "register|signup|sign up|login|log in": "5",
+            "manage|admin|administrator": "6",
+            "free|cost|price|payment": "7",
+            "contact|support|help|email": "8"
+        };
+
+        // Toggle chatbot popup
+        chatbotButton.addEventListener('click', function() {
+            chatbotPopup.style.display = 'flex';
+            chatbotInput.focus();
+        });
+
+        // Close chatbot popup
+        chatbotClose.addEventListener('click', function() {
+            chatbotPopup.style.display = 'none';
+        });
+
+        // Send message on Enter key
+        chatbotInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Send message on button click
+        chatbotSend.addEventListener('click', sendMessage);
+
+        function sendMessage() {
+            const message = chatbotInput.value.trim();
+            if (message) {
+                // Add user message to chat
+                addMessage(message, 'user');
+                
+                // Clear input
+                chatbotInput.value = '';
+                
+                // Process the message
+                processMessage(message);
+            }
+        }
+        
+        function processMessage(message) {
+            // Check if the message is just a number from 1-8
+            if (/^[1-8]$/.test(message)) {
+                respondToOption(message);
+                return;
+            }
+            
+            // Check for keywords in the message
+            let foundMatch = false;
+            for (const [key, value] of Object.entries(keywords)) {
+                const regex = new RegExp(key, 'i');
+                if (regex.test(message)) {
+                    respondToOption(value);
+                    foundMatch = true;
+                    break;
+                }
+            }
+            
+            // Default response if no match found
+            if (!foundMatch) {
+                setTimeout(() => {
+                    addMessage("I'm not sure I understand. Please select an option from 1-8 or ask a more specific question about Neighborly.", 'bot');
+                    // Show the menu again
+                    setTimeout(() => {
+                        const menuOptions = document.getElementById('menu-options').innerHTML;
+                        addMessage(menuOptions, 'bot');
+                    }, 300);
+                }, 500);
+            }
+        }
+        
+        function respondToOption(option) {
+            if (answers[option]) {
+                // Use setTimeout to simulate a brief delay in response
+                setTimeout(() => {
+                    // Replace ** with bold text
+                    let formattedAnswer = answers[option].replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                    
+                    const messageElement = document.createElement('div');
+                    messageElement.className = 'chatbot-message bot-message';
+                    messageElement.innerHTML = formattedAnswer;
+                    chatbotBody.appendChild(messageElement);
+                    
+                    // Add "anything else" follow-up after a short delay
+                    setTimeout(() => {
+                        addMessage("Is there anything else I can help you with? Please select another option or type your question.", 'bot');
+                    }, 800);
+                    
+                    // Scroll to bottom
+                    chatbotBody.scrollTop = chatbotBody.scrollHeight;
+                }, 500);
+            }
+        }
+
+        function addMessage(message, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.className = sender === 'user' ? 'chatbot-message user-message' : 'chatbot-message bot-message';
+            
+            // For bot messages that are menus, we want to preserve line breaks
+            if (message.includes('<br>')) {
+                messageElement.innerHTML = message;
+            } else {
+                messageElement.textContent = message;
+            }
+            
+            chatbotBody.appendChild(messageElement);
+            
+            // Scroll to the latest message
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+        }
+    });
+</script>
     </div>
 </body>
 </html>
