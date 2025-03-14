@@ -16,7 +16,7 @@ app.secret_key = os.getenv("SECRET_KEY", "supersecretkey")
 DB_CONFIG = {
     "host": os.getenv("DB_HOST", "localhost"),
     "user": os.getenv("DB_USER", "root"),
-    "password": os.getenv("DB_PASSWORD", "epichaibro"),
+    "password": os.getenv("DB_PASSWORD", "addy"),
     "database": os.getenv("DB_NAME", "psdproject"),
 }
 
@@ -89,6 +89,18 @@ def events():
     cursor.close()
     conn.close()
     return render_template("events.html", events=events_list)
+
+@app.route('/raise')
+def raise_voice():
+    return render_template('raise.html')
+
+@app.route('/community-section')
+def community_section():
+    return render_template('community-section.html')
+
+@app.route('/testi')
+def testi():
+    return render_template('testi.html')
 
 # Route to add event (admin only)
 @app.route("/add_event", methods=["GET", "POST"])

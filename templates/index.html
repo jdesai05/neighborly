@@ -318,6 +318,26 @@
                 <img src="{{ url_for('static', filename='images/pic1.png') }}" alt="Neighborhood view with decorative circles" class="hero-image">
             </div>
         </section>
+        <div id="community-sec"></div>
+          <script>
+             fetch('community-section.html')
+            .then(response => response.text())
+            .then(html => document.getElementById('community-section').innerHTML = html);
+          </script>
+          <div id="raise-voice"></div>
+          <script>
+              fetch('/raise')
+            .then(response => response.text())
+            .then(html => document.getElementById('raise-voice').innerHTML = html);
+
+          </script>
+        <div id="testi"></div>
+        
+        <script>
+            fetch('/testi')
+            .then(response => response.text())
+            .then(html => document.getElementById('testi').innerHTML = html);
+        </script>
     </div>
 </body>
 </html>

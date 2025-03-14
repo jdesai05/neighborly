@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neighborly Community</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #000;
+        }
+        
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .cta-box {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #fff;
+            margin-bottom: 20px;
+        }
+        
+        .cta-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .cta-icon {
+            color: #ff8c00;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #3a3541;
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .features-section {
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .features-title {
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+        
+        .features-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .feature-card {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            margin-bottom: 15px;
+        }
+        
+        .feature-icon img {
+            width: 80px;
+            height: 60px;
+        }
+        
+        .feature-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <div class="hero-image">
+                <img src="{{ url_for('static', filename='images/pic3.png') }}" alt="Group of diverse community members">
+            </div>
+            <div class="hero-content">
+                <h1>Join the Neighborly Community Today!</h1>
+                <p>Stay connected with your neighbors and improve your community by voicing your concerns. Together, we can make a change!</p>
+                
+                <div class="cta-box">
+                    <div class="cta-header">
+                        <span class="cta-icon">📣</span>
+                        <span>Raise Your Voice, Make a Difference!</span>
+                    </div>
+                    <p>Download our app now to submit concerns on the go and stay updated.</p>
+                </div>
+                
+                <button class="btn">Get Started Now!</button>
+            </div>
+        </div>
+        
+        <div class="features-section">
+            <h2 class="features-title">Empower Your Community Today</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="{{ url_for('static', filename='images/i1.png') }}" alt="House icon">
+                    </div>
+                    <div class="feature-title">1000+ Complaints</div>
+                    <div class="feature-description">Community Voices Heard</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="{{ url_for('static', filename='images/i2.png') }}" alt="Support icon">
+                    </div>
+                    <div class="feature-title">24/7 Support</div>
+                    <div class="feature-description">Always On Standby</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="{{ url_for('static', filename='images/i3.png') }}" alt="Stars icon">
+                    </div>
+                    <div class="feature-title">Instant Updates</div>
+                    <div class="feature-description">Stay Informed</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="{{ url_for('static', filename='images/i4.png') }}" alt="Money icon">
+                    </div>
+                    <div class="feature-title">Join 5000+ users</div>
+                    <div class="feature-description">Together We Thrive</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
