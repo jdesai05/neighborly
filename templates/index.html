@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .auth-button {
+            background-color: #3a2f35;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f5f7fa;
+            border-radius: 10px;
+            padding: 60px 40px;
+            margin-top: 20px;
+        }
+
+        .hero-content {
+            max-width: 500px;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .hero-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background-color: #3a2f35;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .hero-image {
+            width: 400px;
+            height: auto;
+        }
+
+        /* Floating Chatbot Button */
+        .chatbot-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #3a2f35;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out;
+            z-index: 999;
+        }
+
+        .chatbot-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-icon img {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Chatbot Popup */
+        .chatbot-popup {
+            display: none;
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            height: 450px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chatbot-header {
+            background-color: #3a2f35;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            position: relative;
+        }
+
+        .chatbot-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chatbot-message {
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+
+        .user-message {
+            background-color: #f0f0f0;
+            align-self: flex-end;
+        }
+
+        .bot-message {
+            background-color: #e1f5fe;
+            align-self: flex-start;
+        }
+
+        .chatbot-input-container {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .chatbot-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            margin-right: 10px;
+            outline: none;
+        }
+
+        .chatbot-send-btn {
+            background-color: #3a2f35;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .chatbot-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Flash messages */
+        .flash-messages {
+            margin: 10px 0;
+        }
+
+        .flash {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .flash.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .flash.danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .flash.info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+    </style>
+    <title>Neighborly - Connect with your neighborhood</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Neighborly Logo" width="50" height="60">
+                <span class="logo-text">Neighborly</span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="{{ url_for('home') }}">Home</a>
+                <div class="dropdown">
+                    <a href="{{ url_for('complaintsform') }}">Complaints &#9662;</a>
+                </div>
+                <a href="#">About Us</a>
+                <a href="{{ url_for('events') }}">Events</a>
+                {% if session.get('is_admin') %}
+                    <a href="{{ url_for('add_event') }}">Add Event</a>
+                {% endif %}
+            </div>
+            
+            {% if session.get('user_id') %}
+                <button class="auth-button" onclick="window.location.href='/logout'">Logout</button>
+            {% else %}
+                <button class="auth-button" onclick="window.location.href='/signup'">Register / Login</button>
+            {% endif %}
+        </nav>
+        
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Connect with your neighborhood like never before.</h1>
+                <p class="hero-text">Join Neighborly to stay updated on community events, local services, and neighborhood updates.</p>
+                <button class="cta-button" onclick="window.location.href='/housingreg'">Get Started Today</button>
+            </div>
+            
+            <div class="hero-image-container">
+                <img src="{{ url_for('static', filename='images/pic1.png') }}" alt="Neighborhood view with decorative circles" class="hero-image">
+            </div>
+        </section>
+    </div>
+</body>
+</html>
